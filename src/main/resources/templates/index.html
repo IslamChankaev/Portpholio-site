@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио Разработчика</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: #f8f9fa;
+            padding-top: 60px;
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary-color) !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 50px;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: white;
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .personal-info {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .personal-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .skill-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .skill-level {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .project-card {
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Навигация -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-code me-2"></i>Портфолио
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Обо мне</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Навыки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Проекты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Герой секция -->
+<section class="hero-section" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">Java Backend Разработчик</h1>
+                <p class="lead mb-4">Создаю эффективные и масштабируемые веб-приложения на Spring Boot.
+                    Специализируюсь на разработке REST API, микросервисной архитектуре и интеграции с базами данных.</p>
+                <div class="d-flex gap-3">
+                    <a href="#projects" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-briefcase me-2"></i>Проекты
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                <div style="width: 200px; height: 200px; background: rgba(255,255,255,0.1);
+                                border-radius: 50%; margin: 0 auto; display: flex; align-items: center;
+                                justify-content: center; font-size: 5rem;">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Основной контент -->
+<div class="container">
+    <div class="row">
+        <!-- Левая колонка: Личная информация -->
+        <div class="col-lg-4">
+            <!-- Личная характеристика -->
+            <div class="personal-info mb-4">
+                <h3><i class="fas fa-user me-2"></i>Обо мне</h3>
+                <p><strong>Имя:</strong> Чанкаев Ислам </p>
+                <p><strong>Специализация:</strong> Backend разработчик (Java)</p>
+                <p><strong>Опыт:</strong> Нет </p>
+                <p><strong>Локация:</strong> Самара, Россия</p>
+
+                <div class="info-box mt-4">
+                    <h5><i class="fas fa-graduation-cap me-2"></i>Образование</h5>
+                    <p class="mb-0">Самарский национальный университет им.Королева<br>Машиностроение<br>2022-2027</p>
+                </div>
+
+                <div class="info-box">
+                    <h5><i class="fas fa-bullseye me-2"></i>Цели</h5>
+                    <p class="mb-0">Получение опыта реальной работы.Повышение квалификации в области Backend-разработки
+                        Развитие в области микросервисной архитектуры и облачных технологий.</p>
+                </div>
+
+                <div class="info-box">
+                    <h5><i class="fas fa-language me-2"></i>Языки</h5>
+                    <p class="mb-0">Русский (родной)<br>Английский (A2 - В процессе изучения)</p>
+                </div>
+            </div>
+
+            <!-- Контакты -->
+            <div class="contact-box">
+                <div class="contact-icon">
+                    <i class="fas fa-address-card"></i>
+                </div>
+                <h4>Контакты</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i>Самара, Россия</p>
+
+                <div class="social-icons">
+                    <a href="https://github.com/IslamChankaev" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://t.me/Taldarim666" target="_blank"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: Навыки и проекты -->
+        <div class="col-lg-8">
+            <!-- Технические навыки -->
+            <div class="section" id="skills">
+                <h2 class="section-title">Технические навыки</h2>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="skill-box">
+                            <h4 class="mb-4"><i class="fas fa-cogs me-2"></i>Основные технологии</h4>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="skill-name">Java</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="skill-name">Spring Boot</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="skill-name">MySQL/PostgreSQL</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="skill-name">REST API</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="skill-box">
+                            <h4 class="mb-4"><i class="fas fa-tools me-2"></i>Инструменты и другое</h4>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-docker"></i>
+                                </div>
+                                <div class="skill-name">Docker</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="skill-name">Git</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="skill-name"><W>Windows/Mac OS</W></div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <div class="skill-name">Maven/Gradle</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Дополнительные навыки в текстовой рамке -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-plus-circle me-2"></i>Дополнительные навыки
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Backend:</h5>
+                                <ul>
+                                    <li>Spring Framework (Core, MVC, Security)</li>
+                                    <li>Hibernate/JPA</li>
+                                    <li>JUnit/Mockito</li>
+                                    <li>Kafka</li>
+                                    <li>Redis</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Инфраструктура:</h5>
+                                <ul>
+                                    <li>Docker Compose</li>
+                                    <li>CI/CD (GitLab CI)</li>
+                                    <li>Nginx</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Проекты -->
+            <div class="section" id="projects">
+                <h2 class="section-title">Мои проекты</h2>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 class="project-img" alt="E-commerce">
+                            <div class="project-content">
+                                <h5>Интернет-магазин</h5>
+                                <p>Полнофункциональный интернет-магазин на Spring Boot с корзиной, оплатой и админ-панелью.</p>
+                                <div class="mb-3">
+                                    <span class="tech-tag">Java</span>
+                                    <span class="tech-tag">Spring Boot</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Thymeleaf</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-external-link-alt me-1"></i>Демо
+                                    </a>
+                                    <a href="#" class="btn btn-outline-dark btn-sm">
+                                        <i class="fab fa-github me-1"></i>Код
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 class="project-img" alt="API">
+                            <div class="project-content">
+                                <h5>REST API для социальной сети</h5>
+                                <p>Микросервисная архитектура REST API с JWT аутентификацией и WebSocket для чата.</p>
+                                <div class="mb-3">
+                                    <span class="tech-tag">Spring Boot</span>
+                                    <span class="tech-tag">JWT</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">WebSocket</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-external-link-alt me-1"></i>Демо
+                                    </a>
+                                    <a href="#" class="btn btn-outline-dark btn-sm">
+                                        <i class="fab fa-github me-1"></i>Код
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="project-card">
+                            <img src="https://lifehacker.ru/wp-content/uploads/2022/03/8-poiskovikov-kotorye-luchshe-chem-Google_1553260948_1647236544.jpg"
+                                 class="project-img" alt="Searchengine">
+                            <div class="project-content">
+                                <h5>Searchengine</h5>
+                                <p>Backend поисковика для указанных сайтов с использованием MySQL</p>
+                                <div class="mb-3">
+                                    <span class="tech-tag">Spring Boot</span>
+                                    <span class="tech-tag">Java</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">ForkJoinPool</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a href="https://github.com/IslamChankaev/Searchengine-" class="btn btn-outline-dark btn-sm">
+                                        <i class="fab fa-github me-1"></i>Код
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="project-card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcf5NBLRBegPkUu2y98Y0CXYdes5SIY2AarQ&s"
+                                 class="project-img" alt="Hotel-booking-app">
+                            <div class="project-content">
+                                <h5>Hotel booking app</h5>
+                                <p>Приложение для бронирования отелей с использованием Docker-compose и MySQL.</p>
+                                <div class="mb-3">
+                                    <span class="tech-tag">Java</span>
+                                    <span class="tech-tag">Spring boot</span>
+                                    <span class="tech-tag">Docker-compose</span>
+                                    <span class="tech-tag">MySQL</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    </a>
+                                    <a href="https://github.com/IslamChankaev/Hotel-booking-app" class="btn btn-outline-dark btn-sm">
+                                        <i class="fab fa-github me-1"></i>Код
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Фиксированная навигация
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+        } else {
+            navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        }
+    });
+</script>
+</body>
+</html>
